@@ -31,14 +31,21 @@ namespace CampoMinado_C_Sharp.Views
             {
                 case "EASY":
                     MessageBox.Show("EASY");
+                    Fild easyMode = new Fild(Entidades.Constants.AmountBombs.easy, Entidades.Constants.MapDimension.easy);
+                    easyMode.ShowDialog();
                     break;
                 
                 case "MEDIUM":
                     MessageBox.Show("MEDIUM");
+                    Fild mediumMode = new Fild(Entidades.Constants.AmountBombs.medium, Entidades.Constants.MapDimension.medium);
+                    mediumMode.ShowDialog();
                     break;
                 
                 case "HARD":
                     MessageBox.Show("HARD");
+
+                    Fild hardMode = new Fild(Entidades.Constants.AmountBombs.hard, Entidades.Constants.MapDimension.hard);
+                    hardMode.ShowDialog();
                     break;
 
                 default:

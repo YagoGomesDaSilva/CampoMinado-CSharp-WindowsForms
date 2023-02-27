@@ -10,6 +10,7 @@ namespace CampoMinado_C_Sharp.Entidades
     {
         private bool _bomb = false;
         private bool _flag = false;
+        private int _id = 0;
 
         public bool Bomb
         {
@@ -21,6 +22,12 @@ namespace CampoMinado_C_Sharp.Entidades
         {
             get => _flag;
             set => _flag = value;
+        }
+
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
         }
     }
 }

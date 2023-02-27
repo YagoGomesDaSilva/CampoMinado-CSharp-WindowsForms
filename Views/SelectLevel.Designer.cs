@@ -38,7 +38,8 @@
             // 
             // lbl_Welcome
             // 
-            this.lbl_Welcome.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_Welcome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_Welcome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_Welcome.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbl_Welcome.Location = new System.Drawing.Point(250, 10);
@@ -52,8 +53,7 @@
             // 
             // button1
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button1.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button1.Location = new System.Drawing.Point(180, 220);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(150, 80);
@@ -65,7 +65,7 @@
             // 
             // lbl_information
             // 
-            this.lbl_information.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lbl_information.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.lbl_information.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.lbl_information.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.lbl_information.Location = new System.Drawing.Point(250, 133);
@@ -79,8 +79,8 @@
             // 
             // button2
             // 
-            this.button2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button2.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button2.Location = new System.Drawing.Point(417, 220);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(150, 80);
@@ -92,8 +92,7 @@
             // 
             // button3
             // 
-            this.button3.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button3.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button3.Location = new System.Drawing.Point(652, 220);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(150, 80);
@@ -105,8 +104,8 @@
             // 
             // button4
             // 
-            this.button4.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.button4.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.button4.Location = new System.Drawing.Point(417, 340);
             this.button4.Name = "button4";
             this.button4.Size = new System.Drawing.Size(150, 50);
