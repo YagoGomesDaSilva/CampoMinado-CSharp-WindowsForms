@@ -21,7 +21,6 @@ D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsFor
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\bin\Debug\net6.0-windows\CampoMinado C Sharp.runtimeconfig.json
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\bin\Debug\net6.0-windows\CampoMinado C Sharp.dll
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\bin\Debug\net6.0-windows\CampoMinado C Sharp.pdb
-D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado C Sharp.csproj.AssemblyReference.cache
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado_C_Sharp.Views.Fild.resources
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado_C_Sharp.Views.SelectLevel.resources
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado C Sharp.csproj.GenerateResource.cache
@@ -34,3 +33,4 @@ D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsFor
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado C Sharp.pdb
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado C Sharp.genruntimeconfig.cache
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\ref\CampoMinado C Sharp.dll
+D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado C Sharp.sourcelink.json

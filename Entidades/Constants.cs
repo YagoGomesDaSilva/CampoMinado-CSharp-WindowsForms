@@ -16,14 +16,13 @@ namespace CampoMinado_C_Sharp.Entidades
 
         public enum AmountBombs
         {
-            easy = 10, medium = 25, hard = 50
+            easy = 10, medium = 20, hard = 30
         }
 
         public enum MapDimension
         {
-            easy = 10, medium = 20, hard = 30
+            easy = 10, medium = 15, hard = 20
         }
-
 
     }
 }

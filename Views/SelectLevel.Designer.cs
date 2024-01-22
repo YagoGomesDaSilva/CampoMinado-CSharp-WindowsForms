@@ -28,119 +28,115 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lbl_Welcome = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
-            this.lbl_information = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.SuspendLayout();
+            lbl_Welcome = new Label();
+            btn_easy = new Button();
+            lbl_information = new Label();
+            btn_medium = new Button();
+            btn_hard = new Button();
+            btn_records = new Button();
+            SuspendLayout();
             // 
             // lbl_Welcome
             // 
-            this.lbl_Welcome.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_Welcome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_Welcome.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_Welcome.Location = new System.Drawing.Point(250, 10);
-            this.lbl_Welcome.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_Welcome.Name = "lbl_Welcome";
-            this.lbl_Welcome.Size = new System.Drawing.Size(482, 85);
-            this.lbl_Welcome.TabIndex = 0;
-            this.lbl_Welcome.Text = "lbl_Welcome";
-            this.lbl_Welcome.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_Welcome.UseMnemonic = false;
+            lbl_Welcome.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lbl_Welcome.BorderStyle = BorderStyle.FixedSingle;
+            lbl_Welcome.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_Welcome.Location = new Point(250, 10);
+            lbl_Welcome.Margin = new Padding(0);
+            lbl_Welcome.Name = "lbl_Welcome";
+            lbl_Welcome.Size = new Size(482, 85);
+            lbl_Welcome.TabIndex = 0;
+            lbl_Welcome.Text = "lbl_Welcome";
+            lbl_Welcome.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_Welcome.UseMnemonic = false;
             // 
-            // button1
+            // btn_easy
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button1.Location = new System.Drawing.Point(180, 220);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(150, 80);
-            this.button1.TabIndex = 1;
-            this.button1.Tag = "EASY";
-            this.button1.Text = "btn_easy";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.btn_Click);
+            btn_easy.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
+            btn_easy.Location = new Point(180, 220);
+            btn_easy.Name = "btn_easy";
+            btn_easy.Size = new Size(150, 80);
+            btn_easy.TabIndex = 1;
+            btn_easy.Tag = "EASY";
+            btn_easy.Text = "btn_easy";
+            btn_easy.UseVisualStyleBackColor = true;
+            btn_easy.Click += btn_Click;
             // 
             // lbl_information
             // 
-            this.lbl_information.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_information.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lbl_information.Font = new System.Drawing.Font("Segoe UI", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.lbl_information.Location = new System.Drawing.Point(250, 133);
-            this.lbl_information.Margin = new System.Windows.Forms.Padding(0);
-            this.lbl_information.Name = "lbl_information";
-            this.lbl_information.Size = new System.Drawing.Size(482, 39);
-            this.lbl_information.TabIndex = 5;
-            this.lbl_information.Text = "lbl_information";
-            this.lbl_information.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.lbl_information.UseMnemonic = false;
+            lbl_information.Anchor = AnchorStyles.Left | AnchorStyles.Right;
+            lbl_information.BorderStyle = BorderStyle.FixedSingle;
+            lbl_information.Font = new Font("Segoe UI", 20.25F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_information.Location = new Point(250, 133);
+            lbl_information.Margin = new Padding(0);
+            lbl_information.Name = "lbl_information";
+            lbl_information.Size = new Size(482, 39);
+            lbl_information.TabIndex = 5;
+            lbl_information.Text = "lbl_information";
+            lbl_information.TextAlign = ContentAlignment.MiddleCenter;
+            lbl_information.UseMnemonic = false;
             // 
-            // button2
+            // btn_medium
             // 
-            this.button2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button2.Location = new System.Drawing.Point(417, 220);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(150, 80);
-            this.button2.TabIndex = 6;
-            this.button2.Tag = "MEDIUM";
-            this.button2.Text = "btn_medium";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.btn_Click);
+            btn_medium.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_medium.Location = new Point(417, 220);
+            btn_medium.Name = "btn_medium";
+            btn_medium.Size = new Size(150, 80);
+            btn_medium.TabIndex = 6;
+            btn_medium.Tag = "MEDIUM";
+            btn_medium.Text = "btn_medium";
+            btn_medium.UseVisualStyleBackColor = true;
+            btn_medium.Click += btn_Click;
             // 
-            // button3
+            // btn_hard
             // 
-            this.button3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button3.Location = new System.Drawing.Point(652, 220);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(150, 80);
-            this.button3.TabIndex = 7;
-            this.button3.Tag = "HARD";
-            this.button3.Text = "btn_hard";
-            this.button3.UseVisualStyleBackColor = true;
-            this.button3.Click += new System.EventHandler(this.btn_Click);
+            btn_hard.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
+            btn_hard.Location = new Point(652, 220);
+            btn_hard.Name = "btn_hard";
+            btn_hard.Size = new Size(150, 80);
+            btn_hard.TabIndex = 7;
+            btn_hard.Tag = "HARD";
+            btn_hard.Text = "btn_hard";
+            btn_hard.UseVisualStyleBackColor = true;
+            btn_hard.Click += btn_Click;
             // 
-            // button4
+            // btn_records
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.Location = new System.Drawing.Point(417, 340);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(150, 50);
-            this.button4.TabIndex = 8;
-            this.button4.Tag = "RECORDS";
-            this.button4.Text = "btn_records";
-            this.button4.UseVisualStyleBackColor = true;
-            this.button4.Click += new System.EventHandler(this.btn_Click);
+            btn_records.Anchor = AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            btn_records.Location = new Point(417, 340);
+            btn_records.Name = "btn_records";
+            btn_records.Size = new Size(150, 50);
+            btn_records.TabIndex = 8;
+            btn_records.Tag = "RECORDS";
+            btn_records.Text = "btn_records";
+            btn_records.UseVisualStyleBackColor = true;
+            btn_records.Click += btn_Click;
             // 
             // SelectLevel
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(984, 461);
-            this.Controls.Add(this.button4);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.lbl_information);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.lbl_Welcome);
-            this.Name = "SelectLevel";
-            this.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "SelectLevel";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(984, 461);
+            Controls.Add(btn_records);
+            Controls.Add(btn_hard);
+            Controls.Add(btn_medium);
+            Controls.Add(lbl_information);
+            Controls.Add(btn_easy);
+            Controls.Add(lbl_Welcome);
+            Name = "SelectLevel";
+            RightToLeft = RightToLeft.No;
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "SelectLevel";
+            ResumeLayout(false);
         }
 
         #endregion
 
         private Label lbl_Welcome;
-        private Button button1;
+        private Button btn_easy;
         private Label lbl_information;
-        private Button button2;
-        private Button button3;
-        private Button button4;
+        private Button btn_medium;
+        private Button btn_hard;
+        private Button btn_records;
     }
 }

@@ -22,7 +22,7 @@ namespace CampoMinado_C_Sharp.Views
         private void btn_Click(object sender, EventArgs e)
         {
             string? route = string.Empty;
-            if (sender is Button)
+            if (sender is Button )
             {
                 route = ((Button)sender).Tag.ToString();
             }

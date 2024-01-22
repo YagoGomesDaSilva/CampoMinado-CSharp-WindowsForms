@@ -28,20 +28,45 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.SuspendLayout();
+            GroupBoxFild = new GroupBox();
+            panel1 = new Panel();
+            panel1.SuspendLayout();
+            SuspendLayout();
+            // 
+            // GroupBoxFild
+            // 
+            GroupBoxFild.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            GroupBoxFild.Location = new Point(12, 3);
+            GroupBoxFild.Name = "GroupBoxFild";
+            GroupBoxFild.Size = new Size(500, 74);
+            GroupBoxFild.TabIndex = 0;
+            GroupBoxFild.TabStop = false;
+            // 
+            // panel1
+            // 
+            panel1.Controls.Add(GroupBoxFild);
+            panel1.Dock = DockStyle.Top;
+            panel1.Location = new Point(0, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(524, 80);
+            panel1.TabIndex = 1;
             // 
             // Fild
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Name = "Fild";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Fild";
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(524, 541);
+            Controls.Add(panel1);
+            FormBorderStyle = FormBorderStyle.FixedDialog;
+            Name = "Fild";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Fild";
+            panel1.ResumeLayout(false);
+            ResumeLayout(false);
         }
 
         #endregion
+        private GroupBox GroupBoxFild;
+        private Panel panel1;
     }
 }
