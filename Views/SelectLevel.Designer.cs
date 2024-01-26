@@ -56,7 +56,7 @@
             btn_easy.Location = new Point(180, 220);
             btn_easy.Name = "btn_easy";
             btn_easy.Size = new Size(150, 80);
-            btn_easy.TabIndex = 1;
+            btn_easy.TabIndex = 0;
             btn_easy.Tag = "EASY";
             btn_easy.Text = "btn_easy";
             btn_easy.UseVisualStyleBackColor = true;
@@ -82,7 +82,7 @@
             btn_medium.Location = new Point(417, 220);
             btn_medium.Name = "btn_medium";
             btn_medium.Size = new Size(150, 80);
-            btn_medium.TabIndex = 6;
+            btn_medium.TabIndex = 1;
             btn_medium.Tag = "MEDIUM";
             btn_medium.Text = "btn_medium";
             btn_medium.UseVisualStyleBackColor = true;
@@ -94,7 +94,7 @@
             btn_hard.Location = new Point(652, 220);
             btn_hard.Name = "btn_hard";
             btn_hard.Size = new Size(150, 80);
-            btn_hard.TabIndex = 7;
+            btn_hard.TabIndex = 3;
             btn_hard.Tag = "HARD";
             btn_hard.Text = "btn_hard";
             btn_hard.UseVisualStyleBackColor = true;
@@ -106,7 +106,7 @@
             btn_records.Location = new Point(417, 340);
             btn_records.Name = "btn_records";
             btn_records.Size = new Size(150, 50);
-            btn_records.TabIndex = 8;
+            btn_records.TabIndex = 4;
             btn_records.Tag = "RECORDS";
             btn_records.Text = "btn_records";
             btn_records.UseVisualStyleBackColor = true;
