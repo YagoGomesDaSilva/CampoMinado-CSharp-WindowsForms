@@ -10,7 +10,7 @@ namespace CampoMinado_C_Sharp.Entidades
     {
         public bool Bomb { get; set; }
         public bool Flag { get; set; }
-        public int Id { get; set; } = 0;
+        public int BombsAround { get; set; } = 0;
 
     }
 }
