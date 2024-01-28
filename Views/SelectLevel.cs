@@ -21,36 +21,43 @@ namespace CampoMinado_C_Sharp.Views
 
         private void btn_Click(object sender, EventArgs e)
         {
-            string? route = string.Empty;
-            if (sender is Button )
+            try
             {
-                route = ((Button)sender).Tag.ToString();
+                string? route = string.Empty;
+                if (sender is Button)
+                {
+                    route = ((Button)sender).Tag.ToString();
+                }
+
+                switch (route)
+                {
+                    case "EASY":
+                        MessageBox.Show("EASY");
+                        Fild easyMode = new Fild(Entidades.Constants.AmountBombs.easy, Entidades.Constants.MapDimension.easy);
+                        easyMode.ShowDialog();
+                        break;
+
+                    case "MEDIUM":
+                        MessageBox.Show("MEDIUM");
+                        Fild mediumMode = new Fild(Entidades.Constants.AmountBombs.medium, Entidades.Constants.MapDimension.medium);
+                        mediumMode.ShowDialog();
+                        break;
+
+                    case "HARD":
+                        MessageBox.Show("HARD");
+
+                        Fild hardMode = new Fild(Entidades.Constants.AmountBombs.hard, Entidades.Constants.MapDimension.hard);
+                        hardMode.ShowDialog();
+                        break;
+
+                    default:
+                        MessageBox.Show("cu");
+                        break;
+                }
             }
-
-            switch(route)
+            catch (Exception err)
             {
-                case "EASY":
-                    MessageBox.Show("EASY");
-                    Fild easyMode = new Fild(Entidades.Constants.AmountBombs.easy, Entidades.Constants.MapDimension.easy);
-                    easyMode.ShowDialog();
-                    break;
-                
-                case "MEDIUM":
-                    MessageBox.Show("MEDIUM");
-                    Fild mediumMode = new Fild(Entidades.Constants.AmountBombs.medium, Entidades.Constants.MapDimension.medium);
-                    mediumMode.ShowDialog();
-                    break;
-                
-                case "HARD":
-                    MessageBox.Show("HARD");
-
-                    Fild hardMode = new Fild(Entidades.Constants.AmountBombs.hard, Entidades.Constants.MapDimension.hard);
-                    hardMode.ShowDialog();
-                    break;
-
-                default:
-                    MessageBox.Show("cu");
-                    break;
+                MessageBox.Show(err.Message);
             }
         }
     }
