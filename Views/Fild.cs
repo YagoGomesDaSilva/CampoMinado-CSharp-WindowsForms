@@ -18,10 +18,13 @@ namespace CampoMinado_C_Sharp.Views
     public partial class Fild : Form
     {
 
+        #region Attributes
         Constants.AmountBombs _amontBombs;
         Constants.MapDimension _mapDimension;
         List<List<Cell>> fild = new List<List<Cell>>();
+        #endregion
 
+        #region Builders
         public Fild(Constants.AmountBombs AB, Constants.MapDimension MD)
         {
             InitializeComponent();
@@ -34,7 +37,9 @@ namespace CampoMinado_C_Sharp.Views
             this.ShowIndexes();
 
         }
+        #endregion
 
+        #region Methods
         private void SizeFilde(Constants.MapDimension MD)
         {
             try
@@ -97,11 +102,6 @@ namespace CampoMinado_C_Sharp.Views
             }
         }
 
-        private void Cell_Click(object? sender, EventArgs e)
-        {
-            if(sender is Cell cell) { MessageBox.Show(cell.Bomb.ToString()); }
-        }
-
         public void PlantBombs()
         {
             try
@@ -128,26 +128,6 @@ namespace CampoMinado_C_Sharp.Views
                 MessageBox.Show(err.Message);
             }
 
-        }
-
-        public void IndexAroundBombs(short mapDimension, List<List<Cell>> fild, short i, short j)
-        {
-            for (short r = -1; r < 2; r++)
-            {
-                for (short c = -1; r < 2; c++)
-                {
-
-                    if (i + r > mapDimension || i + r < 0 || j + c > mapDimension || j + c < 0)
-                    {
-                        continue;
-                    }
-                    else if (this.fild[i + r][j + c].Bomb is true) { }
-                    else
-                    {
-                        this.fild[i + r][j + c].BombsAround++;
-                    }
-                }
-            }
         }
        
         public void IndexAroundBombs()
@@ -220,6 +200,14 @@ namespace CampoMinado_C_Sharp.Views
                 MessageBox.Show(err.Message);
             }
         }
+        #endregion
+
+        #region Eventos
+        private void Cell_Click(object? sender, EventArgs e)
+        {
+            if (sender is Cell cell) { MessageBox.Show(cell.Bomb.ToString()); }
+        }
+        #endregion
 
     }
 }

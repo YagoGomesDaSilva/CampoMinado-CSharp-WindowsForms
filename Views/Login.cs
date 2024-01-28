@@ -12,25 +12,14 @@ namespace CampoMinado_C_Sharp.Views
 {
     public partial class Login : Form
     {
+        #region Builders
         public Login()
         {
             InitializeComponent();
         }
+        #endregion  
 
-        private void ClickComponent(object sender, EventArgs e)
-        {
-            try
-            {
-                if (sender is Button btn) { this.ManageEvents(btn.Tag.ToString()); }
-
-                if (sender is LinkLabel ll) { this.ManageEvents(ll.Tag.ToString()); }
-            }
-            catch (Exception err)
-            {
-                MessageBox.Show(err.Message);
-            } 
-        }
-
+        #region Methods
         private void ManageEvents(string? tag)
         {
             try
@@ -54,5 +43,23 @@ namespace CampoMinado_C_Sharp.Views
                 MessageBox.Show(err.Message);
             }
         }
+        #endregion
+
+        #region Eventos
+        private void ClickComponent(object sender, EventArgs e)
+        {
+            try
+            {
+                if (sender is Button btn) { this.ManageEvents(btn.Tag.ToString()); }
+
+                if (sender is LinkLabel ll) { this.ManageEvents(ll.Tag.ToString()); }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        #endregion
     }
 }

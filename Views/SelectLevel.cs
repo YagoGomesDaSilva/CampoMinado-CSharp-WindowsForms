@@ -12,13 +12,16 @@ namespace CampoMinado_C_Sharp.Views
 {
     public partial class SelectLevel : Form
     {
+        #region Builders
         public SelectLevel()
         {
             InitializeComponent();
             this.lbl_Welcome.Text = "Bem Vindo ao\n campo minado do GOD!";
             this.lbl_information.Text = "Selecione o level do game";
         }
+        #endregion
 
+        #region Eventos
         private void btn_Click(object sender, EventArgs e)
         {
             try
@@ -60,5 +63,6 @@ namespace CampoMinado_C_Sharp.Views
                 MessageBox.Show(err.Message);
             }
         }
+        #endregion
     }
 }
