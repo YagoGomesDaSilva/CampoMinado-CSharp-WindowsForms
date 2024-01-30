@@ -17,7 +17,7 @@ namespace CampoMinado_C_Sharp.Views
 {
     public partial class Fild : Form
     {
-
+        //proximo passo : recurcividade dos 0 , bandeira, click no indicer para revelar entorno 
         #region Attributes
         Constants.AmountBombs _amontBombs;
         Constants.MapDimension _mapDimension;
@@ -34,7 +34,7 @@ namespace CampoMinado_C_Sharp.Views
             this.CreateFild();
             this.PlantBombs();
             this.IndexAroundBombs();
-            this.ShowIndexes();
+            //this.ShowIndexes();
 
         }
         #endregion
@@ -70,7 +70,7 @@ namespace CampoMinado_C_Sharp.Views
                     {
                         Cell cell = new Cell();
                         //cell.Text = $"{i}-{j}";
-                        ConficurationCell(cell, row_displacement, column_displacement);
+                        ConficurationCell(cell, row_displacement, column_displacement, i, j);
                         row_displacement += 45;
                         row.Add(cell); // Adicionar a célula à linha
                         Controls.Add(cell);// Adicionar os botões a um formulário para visualização
@@ -86,15 +86,18 @@ namespace CampoMinado_C_Sharp.Views
             }
         }
 
-        public void ConficurationCell(Cell cell, int row_displacement = 0, int column_displacement = 0)
+        public void ConficurationCell(Cell cell, int row_displacement = 0, int column_displacement = 0, short i = 0, short j = 0)
         {
             try
             {
                 cell.Anchor = AnchorStyles.Top | AnchorStyles.Left;
                 cell.Location = new Point(12 + row_displacement, 80 + column_displacement);
+                cell.X = i;
+                cell.Y = j;
                 cell.Size = new Size(45, 45);
                 cell.UseVisualStyleBackColor = true;
-                cell.Click += Cell_Click;
+                cell.BringToFront();
+                cell.MouseDown += Cell_Click;
             }
             catch (Exception err)
             {
@@ -134,25 +137,24 @@ namespace CampoMinado_C_Sharp.Views
         {
             try
             {
-                int mapDimension = Convert.ToInt16(this._mapDimension);
-                for (int i = 0; i <  mapDimension; i++) 
+                short mapDimension = Convert.ToInt16(this._mapDimension);
+                for (short i = 0; i <  mapDimension; i++) 
                 {
-                    for (int j = 0; j < mapDimension; j++)
+                    for (short j = 0; j < mapDimension; j++)
                     {
 
                         if (this.fild[i][j].Bomb is true)
                         {
 
-                            for (int r = -1; r < 2; r++)
+                            for (short r = -1; r < 2; r++)
                             {
-                                for (int c = -1; c < 2; c++)
+                                for (short c = -1; c < 2; c++)
                                 {
 
                                     if (i + r > mapDimension -1 || i + r < 0 || j + c > mapDimension -1 || j + c < 0)
                                     {
                                         continue;
                                     }
-                                    else if (this.fild[i + r][j + c] is null) { }
                                     else if (this.fild[i + r][j + c].Bomb is true) { }
                                     else
                                     {
@@ -200,12 +202,89 @@ namespace CampoMinado_C_Sharp.Views
                 MessageBox.Show(err.Message);
             }
         }
+
+        public void RevealCell(Cell cell)
+        {
+            try
+            {
+                if (!cell.Revealed)
+                {
+                    cell.Revealed = true;
+                    cell.Text = cell.BombsAround.ToString();
+                }
+                else
+                {
+                    this.RevealAround(cell);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        public void RevealAround(Cell cell)
+        {
+            try
+            {
+                short mapDimension = Convert.ToInt16(this._mapDimension);
+
+                if (cell.Revealed)
+                {
+                    for (short r = -1; r < 2; r++)
+                    {
+                        for (short c = -1; c < 2; c++)
+                        {
+
+                            if (cell.X + r > mapDimension - 1 || cell.X + r < 0 || cell.Y + c > mapDimension - 1 || cell.Y + c < 0)
+                            {
+                                continue;
+                            }
+                            else if (this.fild[cell.X + r][cell.Y + c].Bomb is true) 
+                            {
+                                this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
+
+                            }
+                            else
+                            {
+                                this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].BombsAround.ToString();
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }      
+        }
+
+
         #endregion
 
         #region Eventos
-        private void Cell_Click(object? sender, EventArgs e)
+        private void Cell_Click(object? sender, MouseEventArgs e)
         {
-            if (sender is Cell cell) { MessageBox.Show(cell.Bomb.ToString()); }
+            try
+            {
+                if (sender is Cell cell)
+                {
+                    if (e.Button == MouseButtons.Left)
+                    {
+                        this.RevealCell(cell);
+                    }
+
+                    if (e.Button == MouseButtons.Right)
+                    {
+                        MessageBox.Show($"Clique do botão direito! -- {cell.Bomb}");
+                    }
+
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }    
         }
         #endregion
 
