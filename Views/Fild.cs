@@ -207,14 +207,76 @@ namespace CampoMinado_C_Sharp.Views
         {
             try
             {
-                if (!cell.Revealed)
+                if (cell.Bomb is true) { cell.Revealed = true;  return; }
+
+                if (cell.Revealed == false)
                 {
-                    cell.Revealed = true;
-                    cell.Text = cell.BombsAround.ToString();
+                    if (cell.BombsAround == 0)
+                    {
+                        this.RevealRecursiveCells(cell);
+                    }
+                    else
+                    {
+                        cell.Revealed = true;
+                        cell.Text = cell.BombsAround.ToString();
+                    }
                 }
                 else
                 {
                     this.RevealAround(cell);
+                }
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void RevealRecursiveCells(Cell cell)
+        {
+            try
+            {
+                short mapDimension = Convert.ToInt16(this._mapDimension);
+                short x = cell.X;
+                short y = cell.Y;
+                this.RecursiveCells(mapDimension, x, y);
+
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
+
+        private void RecursiveCells(short mapDimension, int x, int y)
+        {
+            try
+            {
+                if (!(x <= -1 || x > mapDimension - 1 || y <= -1 || y > mapDimension -1))
+                {                 
+                    if (this.fild[x][y].BombsAround == 0 && this.fild[x][y].Revealed == false)
+                    {
+
+                        this.fild[x][y].Revealed = true;
+                        this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
+
+                        RecursiveCells(mapDimension, x, y - 1);//esquerda
+                        RecursiveCells(mapDimension, x, y + 1);//direita
+                        RecursiveCells(mapDimension, x + 1, y);//baixo
+                        RecursiveCells(mapDimension, x - 1, y);//cima
+
+                        RecursiveCells(mapDimension, x - 1, y - 1);//diagonal superior esquerda
+                        RecursiveCells(mapDimension, x + 1, y + 1);// diagonal inferior dierita
+
+                        RecursiveCells(mapDimension, x + 1, y - 1);//diagonal inferior esquerda
+                        RecursiveCells(mapDimension, x - 1, y + 1);//diagonal superior direita
+
+                    }
+                    else if (this.fild[x][y].BombsAround >= 1 && this.fild[x][y].BombsAround <= 5)
+                    {
+                        this.fild[x][y].Revealed = true;
+                        this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
+                    }
                 }
             }
             catch (Exception err)
@@ -243,10 +305,10 @@ namespace CampoMinado_C_Sharp.Views
                             else if (this.fild[cell.X + r][cell.Y + c].Bomb is true) 
                             {
                                 this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
-
                             }
                             else
                             {
+                                this.fild[cell.X + r][cell.Y + c].Revealed = true;
                                 this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].BombsAround.ToString();
                             }
                         }
