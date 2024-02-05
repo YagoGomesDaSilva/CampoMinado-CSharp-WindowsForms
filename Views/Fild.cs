@@ -277,8 +277,11 @@ namespace CampoMinado_C_Sharp.Views
                     }
                     else if (this.fild[x][y].BombsAround >= 1 && this.fild[x][y].BombsAround <= 5)
                     {
-                        this.fild[x][y].Revealed = true;
-                        this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
+                        if (this.fild[x][y].Flag is false)
+                        {
+                            this.fild[x][y].Revealed = true;
+                            this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
+                        }
                     }
                 }
             }
