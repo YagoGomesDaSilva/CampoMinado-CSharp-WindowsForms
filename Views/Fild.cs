@@ -17,8 +17,9 @@ namespace CampoMinado_C_Sharp.Views
 {
     public partial class Fild : Form
     {
-        //proximo passo : recurcividade dos 0 , bandeira, click no indicer para revelar entorno 
+        //proximo passo : , bandeira,
         #region Attributes
+        const string FLAG_TEXT = "🚩";
         Constants.AmountBombs _amontBombs;
         Constants.MapDimension _mapDimension;
         List<List<Cell>> fild = new List<List<Cell>>();
@@ -207,7 +208,7 @@ namespace CampoMinado_C_Sharp.Views
         {
             try
             {
-                if (cell.Bomb is true) { cell.Revealed = true;  return; }
+                if (cell.Bomb is true) { cell.Revealed = true; cell.Text = cell.Bomb.ToString(); return; }
 
                 if (cell.Revealed == false)
                 {
@@ -254,11 +255,13 @@ namespace CampoMinado_C_Sharp.Views
             {
                 if (!(x <= -1 || x > mapDimension - 1 || y <= -1 || y > mapDimension -1))
                 {                 
-                    if (this.fild[x][y].BombsAround == 0 && this.fild[x][y].Revealed == false)
+                    if (this.fild[x][y].BombsAround == 0 && this.fild[x][y].Revealed is false)
                     {
-
-                        this.fild[x][y].Revealed = true;
-                        this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
+                        if (this.fild[x][y].Flag is false)
+                        {
+                            this.fild[x][y].Revealed = true;
+                            this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
+                        }
 
                         RecursiveCells(mapDimension, x, y - 1);//esquerda
                         RecursiveCells(mapDimension, x, y + 1);//direita
@@ -304,12 +307,16 @@ namespace CampoMinado_C_Sharp.Views
                             }
                             else if (this.fild[cell.X + r][cell.Y + c].Bomb is true) 
                             {
-                                this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
+                                if (this.fild[cell.X + r][cell.Y + c].Flag is false)
+                                    this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
                             }
                             else
                             {
-                                this.fild[cell.X + r][cell.Y + c].Revealed = true;
-                                this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].BombsAround.ToString();
+                                if (this.fild[cell.X + r][cell.Y + c].Flag is false)
+                                {
+                                    this.fild[cell.X + r][cell.Y + c].Revealed = true;
+                                    this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].BombsAround.ToString();
+                                }
                             }
                         }
                     }
@@ -319,6 +326,30 @@ namespace CampoMinado_C_Sharp.Views
             {
                 MessageBox.Show(err.Message);
             }      
+        }
+
+        public void PutAndRemoveFlag(Cell cell)
+        {
+            try
+            {            
+                if (cell.Revealed is false)
+                {
+                    if(cell.Flag is false)
+                    {
+                        cell.Flag = true;
+                        cell.Text = FLAG_TEXT;
+                    }
+                    else
+                    { 
+                        cell.Flag = false;
+                        cell.Text = string.Empty;
+                    }
+                }           
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
         }
 
 
@@ -338,7 +369,7 @@ namespace CampoMinado_C_Sharp.Views
 
                     if (e.Button == MouseButtons.Right)
                     {
-                        MessageBox.Show($"Clique do botão direito! -- {cell.Bomb}");
+                        this.PutAndRemoveFlag(cell);
                     }
 
                 }
