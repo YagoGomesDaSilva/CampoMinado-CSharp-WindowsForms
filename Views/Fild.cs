@@ -11,15 +11,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static CampoMinado_C_Sharp.Entidades.Constants;
+using static System.Reflection.Metadata.BlobBuilder;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace CampoMinado_C_Sharp.Views
 {
     public partial class Fild : Form
     {
-        //proximo passo : , bandeira,
+        //proximo passo : POIR O CONTADOR DE CELULAS REVELADAS PARA CONDIÇÃO DE VITORIA
         #region Attributes
         const string FLAG_TEXT = "🚩";
+        bool bomb_burst = false;
+        short cont_Bombs_With_Flags = 0;
         Constants.AmountBombs _amontBombs;
         Constants.MapDimension _mapDimension;
         List<List<Cell>> fild = new List<List<Cell>>();
@@ -208,7 +211,13 @@ namespace CampoMinado_C_Sharp.Views
         {
             try
             {
-                if (cell.Bomb is true) { cell.Revealed = true; cell.Text = cell.Bomb.ToString(); return; }
+                if (cell.Bomb is true) 
+                { 
+                    cell.Revealed = true; 
+                    cell.Text = cell.Bomb.ToString();
+                    this.bomb_burst = true;
+                    return; 
+                }
 
                 if (cell.Revealed == false)
                 {
@@ -311,7 +320,10 @@ namespace CampoMinado_C_Sharp.Views
                             else if (this.fild[cell.X + r][cell.Y + c].Bomb is true) 
                             {
                                 if (this.fild[cell.X + r][cell.Y + c].Flag is false)
+                                {
                                     this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
+                                    this.bomb_burst = true;
+                                }
                             }
                             else
                             {
@@ -339,11 +351,13 @@ namespace CampoMinado_C_Sharp.Views
                 {
                     if(cell.Flag is false)
                     {
+                        if(cell.Bomb is true) { this.cont_Bombs_With_Flags++; }
                         cell.Flag = true;
                         cell.Text = FLAG_TEXT;
                     }
                     else
-                    { 
+                    {
+                        if (cell.Bomb is true) { this.cont_Bombs_With_Flags--; }
                         cell.Flag = false;
                         cell.Text = string.Empty;
                     }
@@ -355,7 +369,28 @@ namespace CampoMinado_C_Sharp.Views
             }
         }
 
+        private void GameEndingConditions()
+        {
+            try
+            {
+                if(this.bomb_burst is false)
+                {
 
+                    if (this.cont_Bombs_With_Flags == Convert.ToInt16(this._amontBombs))
+                    {
+                        MessageBox.Show("VOCE GANHOU!!!");
+                    }
+                }
+                else 
+                {
+                    MessageBox.Show("VOCE FOI EXPLODIDO!!!");
+                }              
+            }
+            catch (Exception err)
+            {
+                MessageBox.Show(err.Message);
+            }
+        }
         #endregion
 
         #region Eventos
@@ -374,14 +409,19 @@ namespace CampoMinado_C_Sharp.Views
                     {
                         this.PutAndRemoveFlag(cell);
                     }
-
                 }
             }
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
-            }    
+            } 
+            finally 
+            { 
+                this.GameEndingConditions(); 
+            }
         }
+
+        
         #endregion
 
     }
