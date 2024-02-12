@@ -23,6 +23,8 @@ namespace CampoMinado_C_Sharp.Views
         const string FLAG_TEXT = "🚩";
         bool bomb_burst = false;
         short cont_Bombs_With_Flags = 0;
+        short no_Bombs_Cells = 0;
+        short cont_Cells_Revealed = 0;
         Constants.AmountBombs _amontBombs;
         Constants.MapDimension _mapDimension;
         List<List<Cell>> fild = new List<List<Cell>>();
@@ -34,11 +36,12 @@ namespace CampoMinado_C_Sharp.Views
             InitializeComponent();
             this._amontBombs = AB;
             this._mapDimension = MD;
+            this.no_Bombs_Cells = (short) (Convert.ToInt16(this._mapDimension) * Convert.ToInt16(this._mapDimension) - Convert.ToInt16(this._amontBombs));
             this.SizeFilde(this._mapDimension);
             this.CreateFild();
             this.PlantBombs();
             this.IndexAroundBombs();
-            //this.ShowIndexes();
+            this.ShowIndexes();
 
         }
         #endregion
@@ -195,7 +198,7 @@ namespace CampoMinado_C_Sharp.Views
                         }
                         else
                         {
-                            this.fild[i][j].Text = this.fild[i][j].BombsAround.ToString();
+                            //this.fild[i][j].Text = this.fild[i][j].BombsAround.ToString();
                         }
                     }
                 }
@@ -213,9 +216,10 @@ namespace CampoMinado_C_Sharp.Views
             {
                 if (cell.Bomb is true) 
                 { 
-                    cell.Revealed = true; 
-                    cell.Text = cell.Bomb.ToString();
+                    cell.Revealed = true;
+                    this.cont_Cells_Revealed++;
                     this.bomb_burst = true;
+                    cell.Text = cell.Bomb.ToString();
                     return; 
                 }
 
@@ -227,6 +231,7 @@ namespace CampoMinado_C_Sharp.Views
                     }
                     else
                     {
+                        this.cont_Cells_Revealed++;
                         cell.Revealed = true;
                         cell.Text = cell.BombsAround.ToString();
                     }
@@ -247,9 +252,7 @@ namespace CampoMinado_C_Sharp.Views
             try
             {
                 short mapDimension = Convert.ToInt16(this._mapDimension);
-                short x = cell.X;
-                short y = cell.Y;
-                this.RecursiveCells(mapDimension, x, y);
+                this.RecursiveCells(mapDimension, cell.X, cell.Y);
 
             }
             catch (Exception err)
@@ -268,6 +271,7 @@ namespace CampoMinado_C_Sharp.Views
                     {
                         if (this.fild[x][y].Flag is false)
                         {
+                            cont_Cells_Revealed++;
                             this.fild[x][y].Revealed = true;
                             this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
                         }
@@ -286,8 +290,9 @@ namespace CampoMinado_C_Sharp.Views
                     }
                     else if (this.fild[x][y].BombsAround >= 1 && this.fild[x][y].BombsAround <= 5)
                     {
-                        if (this.fild[x][y].Flag is false)
+                        if (this.fild[x][y].Flag is false && this.fild[x][y].Revealed is false)
                         {
+                            cont_Cells_Revealed++;
                             this.fild[x][y].Revealed = true;
                             this.fild[x][y].Text = this.fild[x][y].BombsAround.ToString();
                         }
@@ -306,7 +311,7 @@ namespace CampoMinado_C_Sharp.Views
             {
                 short mapDimension = Convert.ToInt16(this._mapDimension);
 
-                if (cell.Revealed)
+                if (cell.Revealed is true)
                 {
                     for (short r = -1; r < 2; r++)
                     {
@@ -321,14 +326,17 @@ namespace CampoMinado_C_Sharp.Views
                             {
                                 if (this.fild[cell.X + r][cell.Y + c].Flag is false)
                                 {
-                                    this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
+                                    cont_Cells_Revealed++;
                                     this.bomb_burst = true;
+                                    this.fild[cell.X + r][cell.Y + c].Revealed = true;
+                                    this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].Bomb.ToString();
                                 }
                             }
                             else
                             {
-                                if (this.fild[cell.X + r][cell.Y + c].Flag is false)
+                                if (this.fild[cell.X + r][cell.Y + c].Flag is false && this.fild[cell.X + r][cell.Y + c].Revealed is false)
                                 {
+                                    cont_Cells_Revealed++;
                                     this.fild[cell.X + r][cell.Y + c].Revealed = true;
                                     this.fild[cell.X + r][cell.Y + c].Text = this.fild[cell.X + r][cell.Y + c].BombsAround.ToString();
                                 }
@@ -375,8 +383,11 @@ namespace CampoMinado_C_Sharp.Views
             {
                 if(this.bomb_burst is false)
                 {
+                    short amontBombs = Convert.ToInt16(this._amontBombs);
+                    bool condition1 = this.cont_Bombs_With_Flags == amontBombs ? true : false;
+                    bool condition2 = this.cont_Cells_Revealed == this.no_Bombs_Cells ? true : false;
 
-                    if (this.cont_Bombs_With_Flags == Convert.ToInt16(this._amontBombs))
+                    if (condition1 && condition2)
                     {
                         MessageBox.Show("VOCE GANHOU!!!");
                     }
@@ -420,10 +431,6 @@ namespace CampoMinado_C_Sharp.Views
                 this.GameEndingConditions(); 
             }
         }
-
-        
         #endregion
-
     }
 }
-
