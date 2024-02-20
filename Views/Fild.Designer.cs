@@ -29,18 +29,44 @@
         private void InitializeComponent()
         {
             GroupBoxFild = new GroupBox();
+            groupBox1 = new GroupBox();
+            lbl_TimeRecord = new Label();
             panel1 = new Panel();
+            GroupBoxFild.SuspendLayout();
+            groupBox1.SuspendLayout();
             panel1.SuspendLayout();
             SuspendLayout();
             // 
             // GroupBoxFild
             // 
             GroupBoxFild.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            GroupBoxFild.Location = new Point(12, 3);
+            GroupBoxFild.Controls.Add(groupBox1);
+            GroupBoxFild.Location = new Point(12, -1);
             GroupBoxFild.Name = "GroupBoxFild";
-            GroupBoxFild.Size = new Size(500, 74);
+            GroupBoxFild.Size = new Size(500, 75);
             GroupBoxFild.TabIndex = 0;
             GroupBoxFild.TabStop = false;
+            // 
+            // groupBox1
+            // 
+            groupBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            groupBox1.Controls.Add(lbl_TimeRecord);
+            groupBox1.Location = new Point(400, 12);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(94, 50);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            // 
+            // lbl_TimeRecord
+            // 
+            lbl_TimeRecord.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            lbl_TimeRecord.Font = new Font("Segoe UI", 15F, FontStyle.Regular, GraphicsUnit.Point);
+            lbl_TimeRecord.Location = new Point(9, 13);
+            lbl_TimeRecord.Name = "lbl_TimeRecord";
+            lbl_TimeRecord.Size = new Size(76, 30);
+            lbl_TimeRecord.TabIndex = 0;
+            lbl_TimeRecord.Text = "99999";
+            lbl_TimeRecord.TextAlign = ContentAlignment.MiddleCenter;
             // 
             // panel1
             // 
@@ -61,6 +87,8 @@
             Name = "Fild";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Fild";
+            GroupBoxFild.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             panel1.ResumeLayout(false);
             ResumeLayout(false);
         }
@@ -68,5 +96,7 @@
         #endregion
         private GroupBox GroupBoxFild;
         private Panel panel1;
+        private Label lbl_TimeRecord;
+        private GroupBox groupBox1;
     }
 }

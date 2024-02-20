@@ -1,18 +1,6 @@
 ﻿using CampoMinado_C_Sharp.Entidades;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Reflection;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using static CampoMinado_C_Sharp.Entidades.Constants;
-using static System.Reflection.Metadata.BlobBuilder;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using Timer = System.Windows.Forms.Timer;
+
 
 namespace CampoMinado_C_Sharp.Views
 {
@@ -28,12 +16,17 @@ namespace CampoMinado_C_Sharp.Views
         Constants.AmountBombs _amontBombs;
         Constants.MapDimension _mapDimension;
         List<List<Cell>> fild = new List<List<Cell>>();
+
+        private int elapsedSeconds;
+        private Timer timer;
+
         #endregion
 
         #region Builders
         public Fild(Constants.AmountBombs AB, Constants.MapDimension MD)
         {
             InitializeComponent();
+            this.lbl_TimeRecord.Text = string.Empty;
             this._amontBombs = AB;
             this._mapDimension = MD;
             this.no_Bombs_Cells = (short) (Convert.ToInt16(this._mapDimension) * Convert.ToInt16(this._mapDimension) - Convert.ToInt16(this._amontBombs));
@@ -41,6 +34,7 @@ namespace CampoMinado_C_Sharp.Views
             this.CreateFild();
             this.PlantBombs();
             this.IndexAroundBombs();
+            this.RecordTimeSetting();
             this.ShowIndexes();
 
         }
@@ -59,6 +53,38 @@ namespace CampoMinado_C_Sharp.Views
             {
                 MessageBox.Show(err.Message);
             }
+        }
+
+        public void RecordTimeSetting()
+        {
+            elapsedSeconds = 0;
+
+            // Setting up the Timer
+            this.timer = new Timer();
+            this.timer.Interval = 1000; // Update every 1000 milliseconds (1 second)
+            this.timer.Tick += Timer_Tick;
+
+            // Start the Timer
+            this.timer.Start();
+        }
+
+        private void Timer_Tick(object? sender, EventArgs e)
+        {
+            elapsedSeconds++;
+            UpdateTime();
+        }
+
+        private void UpdateTime()
+        {
+            this.lbl_TimeRecord.Text = $"{elapsedSeconds}";
+            //TimeSpan elapsed = TimeSpan.FromSeconds(elapsedSeconds);
+            //this.lbl_TimeRecord.Text = $"{elapsed.Hours:D2}:{elapsed.Minutes:D2}:{elapsed.Seconds:D2}";
+        }
+
+        private void StopTime()
+        {
+            // Make sure to stop the Timer when closing the form to avoid memory leaks
+            this.timer.Stop();
         }
 
         public void CreateFild()
@@ -389,12 +415,14 @@ namespace CampoMinado_C_Sharp.Views
 
                     if (condition1 && condition2)
                     {
-                        MessageBox.Show("VOCE GANHOU!!!");
+                        this.StopTime();
+                        MessageBox.Show($"VOCE GANHOU!!!\nSeu record: {this.lbl_TimeRecord.Text}");
                     }
                 }
                 else 
                 {
-                    MessageBox.Show("VOCE FOI EXPLODIDO!!!");
+                    this.StopTime();
+                    MessageBox.Show($"VOCE FOI EXPLODIDO!!!\nSeu record: {this.lbl_TimeRecord.Text}");
                 }              
             }
             catch (Exception err)
