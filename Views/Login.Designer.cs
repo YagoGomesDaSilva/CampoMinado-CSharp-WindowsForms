@@ -40,7 +40,7 @@
             // btn_Login
             // 
             btn_Login.Anchor = AnchorStyles.None;
-            btn_Login.Location = new Point(100, 140);
+            btn_Login.Location = new Point(96, 155);
             btn_Login.Name = "btn_Login";
             btn_Login.Size = new Size(91, 23);
             btn_Login.TabIndex = 3;
@@ -52,7 +52,7 @@
             // textBox1
             // 
             textBox1.Anchor = AnchorStyles.None;
-            textBox1.Location = new Point(84, 67);
+            textBox1.Location = new Point(80, 54);
             textBox1.Name = "textBox1";
             textBox1.Size = new Size(128, 23);
             textBox1.TabIndex = 1;
@@ -61,7 +61,7 @@
             // textBox2
             // 
             textBox2.Anchor = AnchorStyles.None;
-            textBox2.Location = new Point(84, 111);
+            textBox2.Location = new Point(80, 109);
             textBox2.Name = "textBox2";
             textBox2.PasswordChar = '●';
             textBox2.Size = new Size(128, 23);
@@ -72,26 +72,28 @@
             // 
             label1.Anchor = AnchorStyles.None;
             label1.AutoSize = true;
-            label1.Location = new Point(120, 49);
+            label1.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(110, 30);
             label1.Name = "label1";
-            label1.Size = new Size(56, 15);
+            label1.Size = new Size(64, 21);
             label1.TabIndex = 3;
-            label1.Text = "USUARIO";
+            label1.Text = "Usuario";
             // 
             // label2
             // 
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
-            label2.Location = new Point(124, 93);
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(113, 85);
             label2.Name = "label2";
-            label2.Size = new Size(45, 15);
+            label2.Size = new Size(53, 21);
             label2.TabIndex = 4;
-            label2.Text = "SENHA";
+            label2.Text = "Senha";
             // 
             // btn_Register
             // 
             btn_Register.Anchor = AnchorStyles.None;
-            btn_Register.Location = new Point(100, 169);
+            btn_Register.Location = new Point(96, 184);
             btn_Register.Name = "btn_Register";
             btn_Register.Size = new Size(91, 23);
             btn_Register.TabIndex = 4;
@@ -104,7 +106,7 @@
             // 
             lbl_ForgotPassword.Anchor = AnchorStyles.None;
             lbl_ForgotPassword.AutoSize = true;
-            lbl_ForgotPassword.Location = new Point(100, 195);
+            lbl_ForgotPassword.Location = new Point(96, 210);
             lbl_ForgotPassword.Name = "lbl_ForgotPassword";
             lbl_ForgotPassword.Size = new Size(91, 15);
             lbl_ForgotPassword.TabIndex = 5;

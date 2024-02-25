@@ -10,6 +10,9 @@
     <Compile Update="Views\Login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\RegistrationData.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="Views\SelectLevel.cs">
       <SubType>Form</SubType>
     </Compile>

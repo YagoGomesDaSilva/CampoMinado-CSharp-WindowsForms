@@ -6,8 +6,7 @@ namespace CampoMinado_C_Sharp.Views
 {
     public partial class Fild : Form
     {
-        //proximo passo : POIR O CONTADOR DE CELULAS REVELADAS PARA CONDIÇÃO DE VITORIA
-        #region Attributes
+        #region
         const string FLAG_TEXT = "🚩";
         bool bomb_burst = false;
         short cont_Bombs_With_Flags = 0;
@@ -18,7 +17,7 @@ namespace CampoMinado_C_Sharp.Views
         List<List<Cell>> fild = new List<List<Cell>>();
 
         private int elapsedSeconds;
-        private Timer timer;
+        private Timer? timer;
 
         #endregion
 

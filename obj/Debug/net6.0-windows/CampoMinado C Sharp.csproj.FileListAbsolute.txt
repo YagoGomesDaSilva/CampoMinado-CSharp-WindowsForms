@@ -35,3 +35,4 @@ D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsFor
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\ref\CampoMinado C Sharp.dll
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado C Sharp.sourcelink.json
 D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado_C_Sharp.Views.Login.resources
+D:\GOD Programation\Linguagens de Programação\C#\CampoMinado-CSharp-WindowsForms\obj\Debug\net6.0-windows\CampoMinado_C_Sharp.Views.RegistrationData.resources

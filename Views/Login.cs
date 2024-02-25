@@ -30,10 +30,12 @@ namespace CampoMinado_C_Sharp.Views
                         this.DialogResult = DialogResult.OK;
                         break;                     
                     case "REGISTER":
-                        MessageBox.Show(tag.ToString());
+                        this.Visible = false;
+                        _ = new Views.RegistrationData(tag).ShowDialog() == DialogResult.OK;
                         break;
                     case "FORGOT":
-                        MessageBox.Show(tag.ToString());
+                        this.Visible = false;
+                        _ = new Views.RegistrationData(tag).ShowDialog() == DialogResult.OK;
                         break;
                     default: break;
                 }
@@ -41,6 +43,10 @@ namespace CampoMinado_C_Sharp.Views
             catch (Exception err)
             {
                 MessageBox.Show(err.Message);
+            }
+            finally
+            {
+                this.Visible = true;
             }
         }
         #endregion
